@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistenceUnit">
+        <class>com.marsss.marsss_will_do.entity.projects.ActivityProject</class>
+        <class>com.marsss.marsss_will_do.entity.projects.ArchiveProject</class>
+        <class>com.marsss.marsss_will_do.entity.short_notes.ShortNote</class>
+        <class>com.marsss.marsss_will_do.entity.tasks.SubTask</class>
+        <class>com.marsss.marsss_will_do.entity.tags.Tag</class>
+        <class>com.marsss.marsss_will_do.entity.tasks.Task</class>
+        <class>com.marsss.marsss_will_do.entity.tags.TaskTag</class>
+        <class>com.marsss.marsss_will_do.entity.user.UserAccount</class>
+        <class>com.marsss.marsss_will_do.entity.user.UserAccountInfo</class>
+        <properties>
+            <property name="openjpa.ConnectionURL"
+                      value="jdbc:mysql://localhost:3306/mars_will_do?useunicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC"/>
+            <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+        </properties>
+    </persistence-unit>
+</persistence>
