@@ -1,4 +1,4 @@
-package com.zcj.blog.config.redis;
+package com.marsss.marsss_will_do.config.redis;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -136,6 +136,7 @@ public class RedisHelperImpl<HK,T> implements RedisHelper<HK,T>{
     public void valuePut(String key, T domain) {
         valueOperations.set(key,domain);
     }
+
 
     /**
      * 获取对象实体类

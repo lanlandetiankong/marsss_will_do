@@ -1,64 +1,53 @@
 package com.marsss.marsss_will_do.bean.project;
 
 import com.marsss.marsss_will_do.entity.projects.ArchiveProject;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.marsss.marsss_will_do.entity.projects.ArchiveProject;
+import com.marsss.marsss_will_do.utils.pinyin.MyPinYinUtil;
+import org.apache.commons.beanutils.BeanUtils;
 
-import javax.transaction.Transactional;
+public class ArchiveProjectBeanFormat {
 
-public class ArchiveProjectBean {
-
-    private String id ;
-    private String name ;
-    private String desc ;
-    private Integer totalTaskCount ;   //总任务数
-    private Integer finishTaskCount;    //已完成
-    private Double progressRate ;   //进度
-
-    public String getDesc() {
-        return desc;
+    public static ArchiveProjectBean entityToBean(ArchiveProject entity) throws Exception{
+        try{
+            ArchiveProjectBean bean = new ArchiveProjectBean() ;
+            BeanUtils.copyProperties(bean,entity);
+            return bean ;
+        }   catch (Exception e){
+            e.printStackTrace();
+        }
+        return null ;
+    }
+    public static ArchiveProject beanToEntity(ArchiveProjectBean bean) throws Exception{
+        try{
+            ArchiveProject entity = new ArchiveProject() ;
+            BeanUtils.copyProperties(entity,bean);
+            entity.setCode(MyPinYinUtil.toPinyin(entity.getName()));
+            return entity ;
+        }   catch (Exception e){
+            e.printStackTrace();
+        }
+        return null ;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public static ArchiveProject beanForUpdate(ArchiveProject entity,ArchiveProjectBean bean) throws Exception{
+        try{
+            BeanUtils.copyProperties(entity,bean);
+            entity.setName(bean.getName());
+            entity.setCode(MyPinYinUtil.toPinyin(entity.getName()));
+            entity.setStartDate(bean.getStartDate());
+            entity.setEndDate(bean.getEndDate());
+            entity.setHurryLevel(bean.getHurryLevel());
+            entity.setGoal(bean.getGoal());
+            entity.setDescription(bean.getDescription());
+            entity.setFirstNote(bean.getFirstNote());
+            entity.setSecondNote(bean.getSecondNote());
+            entity.setSort(bean.getSort());
+            entity.setRemark(bean.getRemark());
+            return entity ;
+        }   catch (Exception e){
+            e.printStackTrace();
+        }
+        return null ;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getTotalTaskCount() {
-        return totalTaskCount;
-    }
-
-    public void setTotalTaskCount(Integer totalTaskCount) {
-        this.totalTaskCount = totalTaskCount;
-    }
-
-    public Integer getFinishTaskCount() {
-        return finishTaskCount;
-    }
-
-    public void setFinishTaskCount(Integer finishTaskCount) {
-        this.finishTaskCount = finishTaskCount;
-    }
-
-    public Double getProgressRate() {
-        return progressRate;
-    }
-
-    public void setProgressRate(Double progressRate) {
-        this.progressRate = progressRate;
-    }
 }

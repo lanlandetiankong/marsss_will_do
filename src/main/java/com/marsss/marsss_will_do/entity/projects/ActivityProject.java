@@ -5,6 +5,7 @@ import com.marsss.marsss_will_do.entity.user.UserAccount;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "activity_project", schema = "mars_will_do")
@@ -25,11 +26,49 @@ public class ActivityProject extends MyBaseEntity {
     private String groupId;
     private Integer sort;
     private String goal;
-    private Integer hurryLevel;
+    private String hurryLevel;
     private String firstNote;
     private String secondNote;
     private String description;
+    private Date startDate ;
+    private Date endDate ;
+    private Integer isTranslateArchive ;
 
+    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    @JoinColumn(name = "archive_project_id",nullable = true)
+    private ArchiveProject archiveProject ;
+
+    public Integer getIsTranslateArchive() {
+        return isTranslateArchive;
+    }
+
+    public void setIsTranslateArchive(Integer isTranslateArchive) {
+        this.isTranslateArchive = isTranslateArchive;
+    }
+
+    public ArchiveProject getArchiveProject() {
+        return archiveProject;
+    }
+
+    public void setArchiveProject(ArchiveProject archiveProject) {
+        this.archiveProject = archiveProject;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
     public String getId() {
         return id;
@@ -109,11 +148,11 @@ public class ActivityProject extends MyBaseEntity {
 
     @Basic
     @Column(name = "hurry_level")
-    public Integer getHurryLevel() {
+    public String getHurryLevel() {
         return hurryLevel;
     }
 
-    public void setHurryLevel(Integer hurryLevel) {
+    public void setHurryLevel(String hurryLevel) {
         this.hurryLevel = hurryLevel;
     }
 

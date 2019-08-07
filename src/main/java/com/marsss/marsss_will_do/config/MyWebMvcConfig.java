@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class MyWebMvcConfig extends WebMvcConfigurerAdapter {
     /**
      * 添加跨域请求
+     * allowCredentials 是否携带jsessionid
      * @param registry
      */
     @Override
@@ -16,6 +17,7 @@ public class MyWebMvcConfig extends WebMvcConfigurerAdapter {
                 .allowedHeaders("*")
                 .allowedMethods("*")
                 .maxAge(1800)
+                .allowCredentials(true)
                 .allowedOrigins("http://localhost:8070") ;
     }
 }

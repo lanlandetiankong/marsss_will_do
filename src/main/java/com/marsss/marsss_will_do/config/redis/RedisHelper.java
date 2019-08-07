@@ -1,4 +1,4 @@
-package com.zcj.blog.config.redis;
+package com.marsss.marsss_will_do.config.redis;
 
 import java.util.List;
 import java.util.Map;
@@ -10,12 +10,12 @@ import java.util.concurrent.TimeUnit;
  * 方法命名格式为 数据操作类型 + 操作 如 hashPut 指以hash结构(也就是map)想key添加键值对
  */
 public interface RedisHelper<HK,T> {
-    String THE_KEY_USER_LOGIN_TOKEN = "blog_user_token" ;
+    String THE_KEY_USER_LOGIN_TOKEN = "userToken" ;
 
     /**
      * Hash结构 添加元素 * @param key key * @param hashKey hashKey * @param domain 元素
      */
-    void hashPut(String key,HK hashKey, T domain);
+    void hashPut(String key, HK hashKey, T domain);
 
     /**
      * Hash结构 获取指定key所有键值对 * @param key * @return

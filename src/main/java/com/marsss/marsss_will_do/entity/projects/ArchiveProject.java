@@ -5,6 +5,7 @@ import com.marsss.marsss_will_do.entity.user.UserAccount;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "archive_project", schema = "mars_will_do")
@@ -25,10 +26,18 @@ public class ArchiveProject extends MyBaseEntity {
     private String groupId;
     private Integer sort;
     private String goal;
-    private Integer hurryLevel;
+    private String hurryLevel;
     private String firstNote;
     private String secondNote;
     private String description;
+    private Date startDate ;
+    private Date endDate ;
+
+    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    @JoinColumn(name = "activity_project_id",nullable = true)
+    private ActivityProject activityProject ;
+
+
 
 
     public String getId() {
@@ -109,13 +118,16 @@ public class ArchiveProject extends MyBaseEntity {
 
     @Basic
     @Column(name = "hurry_level")
-    public Integer getHurryLevel() {
+    public String getHurryLevel() {
         return hurryLevel;
     }
 
-    public void setHurryLevel(Integer hurryLevel) {
+    public void setHurryLevel(String hurryLevel) {
         this.hurryLevel = hurryLevel;
     }
+
+
+
 
     @Basic
     @Column(name = "first_note")
@@ -147,4 +159,27 @@ public class ArchiveProject extends MyBaseEntity {
         this.description = description;
     }
 
+    public ActivityProject getActivityProject() {
+        return activityProject;
+    }
+
+    public void setActivityProject(ActivityProject activityProject) {
+        this.activityProject = activityProject;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 }

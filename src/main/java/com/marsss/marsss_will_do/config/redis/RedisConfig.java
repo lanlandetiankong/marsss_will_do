@@ -1,9 +1,8 @@
-package com.zcj.blog.config.redis;
+package com.marsss.marsss_will_do.config.redis;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
@@ -20,7 +19,7 @@ import java.lang.reflect.Method;
 
 @Configuration
 @EnableCaching
-public class RedisConfig extends CachingConfigurerSupport{
+public class RedisConfig extends CachingConfigurerSupport {
 
     @Override
     public KeyGenerator keyGenerator() {
