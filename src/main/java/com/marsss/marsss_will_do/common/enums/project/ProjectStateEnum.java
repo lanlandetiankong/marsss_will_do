@@ -1,17 +1,13 @@
-package com.marsss.marsss_will_do.common.enums.user;
+package com.marsss.marsss_will_do.common.enums.project;
 
-public enum UserAccountStateEnum {
+
+public enum ProjectStateEnum {
     ENABLED(1,"启用","启用"),
-<<<<<<< HEAD
-    DISABLED(1,"禁用","禁用"),
-    LOCKED(1,"锁定","用户已被锁定")
-=======
     DISABLED(-1,"禁用","禁用"),
-    LOCKED(-2,"锁定","用户已被锁定")
->>>>>>> temp
+    DELETE(-2,"已删除","项目已删除")
     ;
 
-    UserAccountStateEnum(Integer value, String name, String info) {
+    ProjectStateEnum(Integer value, String name, String info) {
         this.value = value;
         this.name = name;
         this.info = info;

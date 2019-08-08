@@ -5,6 +5,10 @@ import com.marsss.marsss_will_do.entity.user.UserAccount;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+<<<<<<< HEAD
+=======
+import java.util.Date;
+>>>>>>> temp
 
 @Entity
 @Table(name = "archive_project", schema = "mars_will_do")
@@ -25,10 +29,25 @@ public class ArchiveProject extends MyBaseEntity {
     private String groupId;
     private Integer sort;
     private String goal;
+<<<<<<< HEAD
     private Integer hurryLevel;
     private String firstNote;
     private String secondNote;
     private String description;
+=======
+    private String hurryLevel;
+    private String firstNote;
+    private String secondNote;
+    private String description;
+    private Date startDate ;
+    private Date endDate ;
+
+    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    @JoinColumn(name = "activity_project_id",nullable = true)
+    private ActivityProject activityProject ;
+
+
+>>>>>>> temp
 
 
     public String getId() {
@@ -109,6 +128,7 @@ public class ArchiveProject extends MyBaseEntity {
 
     @Basic
     @Column(name = "hurry_level")
+<<<<<<< HEAD
     public Integer getHurryLevel() {
         return hurryLevel;
     }
@@ -117,6 +137,19 @@ public class ArchiveProject extends MyBaseEntity {
         this.hurryLevel = hurryLevel;
     }
 
+=======
+    public String getHurryLevel() {
+        return hurryLevel;
+    }
+
+    public void setHurryLevel(String hurryLevel) {
+        this.hurryLevel = hurryLevel;
+    }
+
+
+
+
+>>>>>>> temp
     @Basic
     @Column(name = "first_note")
     public String getFirstNote() {
@@ -147,4 +180,30 @@ public class ArchiveProject extends MyBaseEntity {
         this.description = description;
     }
 
+<<<<<<< HEAD
+=======
+    public ActivityProject getActivityProject() {
+        return activityProject;
+    }
+
+    public void setActivityProject(ActivityProject activityProject) {
+        this.activityProject = activityProject;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+>>>>>>> temp
 }
