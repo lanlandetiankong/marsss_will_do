@@ -24,10 +24,7 @@ public class MyBaseCommonResult<T> implements Serializable {
     private String backUrl ;
     //存储 表格数据
     private List rows ;
-<<<<<<< HEAD
 
-    private T bean;
-=======
     private T bean;
     private Integer code;
 
@@ -39,7 +36,6 @@ public class MyBaseCommonResult<T> implements Serializable {
     public void setCode(Integer code) {
         this.code = code;
     }
->>>>>>> temp
 
     public String getBackUrl() {
         return backUrl;

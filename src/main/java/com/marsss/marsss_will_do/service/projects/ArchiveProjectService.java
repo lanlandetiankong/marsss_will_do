@@ -1,8 +1,5 @@
 package com.marsss.marsss_will_do.service.projects;
 
-<<<<<<< HEAD
-public interface ArchiveProjectService {
-=======
 import com.marsss.marsss_will_do.bean.project.ArchiveProjectBean;
 import com.marsss.marsss_will_do.common.base.service.MyBaseService;
 import com.marsss.marsss_will_do.entity.user.UserAccount;
@@ -10,7 +7,7 @@ import com.marsss.marsss_will_do.entity.user.UserAccount;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public interface ArchiveProjectService extends MyBaseService{
+public interface ArchiveProjectService extends MyBaseService {
 
 
     /**
@@ -20,7 +17,7 @@ public interface ArchiveProjectService extends MyBaseService{
      * @return
      * @throws Exception
      */
-    List<ArchiveProjectBean> doGetArchiveProjectByUserAccount(HttpServletRequest request, UserAccount userAccount,String searchVal) throws Exception;
+    List<ArchiveProjectBean> doGetArchiveProjectByUserAccount(HttpServletRequest request, UserAccount userAccount, String searchVal) throws Exception;
     /**
      * 根据id查询 [归档项目]
      * @param request
@@ -37,5 +34,4 @@ public interface ArchiveProjectService extends MyBaseService{
      * @param activityProjectId
      */
     void doDeleteArchiveProject(HttpServletRequest request,String activityProjectId) ;
->>>>>>> temp
 }

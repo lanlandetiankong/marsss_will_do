@@ -3,12 +3,8 @@ package com.marsss.marsss_will_do.entity.projects;
 import com.marsss.marsss_will_do.common.base.repository.MyBaseEntity;
 import com.marsss.marsss_will_do.entity.user.UserAccount;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-<<<<<<< HEAD
-=======
 import java.util.Date;
->>>>>>> temp
 
 @Entity
 @Table(name = "activity_project", schema = "mars_will_do")
@@ -29,17 +25,13 @@ public class ActivityProject extends MyBaseEntity {
     private String groupId;
     private Integer sort;
     private String goal;
-<<<<<<< HEAD
-    private Integer hurryLevel;
-    private String firstNote;
-    private String secondNote;
-    private String description;
-
-=======
+    @Basic
+    @Column(name = "hurry_level")
     private String hurryLevel;
     private String firstNote;
     private String secondNote;
     private String description;
+
     private Date startDate ;
     private Date endDate ;
     private Integer isTranslateArchive ;
@@ -79,7 +71,6 @@ public class ActivityProject extends MyBaseEntity {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
->>>>>>> temp
 
     public String getId() {
         return id;
@@ -157,23 +148,7 @@ public class ActivityProject extends MyBaseEntity {
         this.goal = goal;
     }
 
-    @Basic
-    @Column(name = "hurry_level")
-<<<<<<< HEAD
-    public Integer getHurryLevel() {
-        return hurryLevel;
-    }
 
-    public void setHurryLevel(Integer hurryLevel) {
-=======
-    public String getHurryLevel() {
-        return hurryLevel;
-    }
-
-    public void setHurryLevel(String hurryLevel) {
->>>>>>> temp
-        this.hurryLevel = hurryLevel;
-    }
 
     @Basic
     @Column(name = "first_note")
@@ -205,4 +180,11 @@ public class ActivityProject extends MyBaseEntity {
         this.description = description;
     }
 
+    public String getHurryLevel() {
+        return hurryLevel;
+    }
+
+    public void setHurryLevel(String hurryLevel) {
+        this.hurryLevel = hurryLevel;
+    }
 }

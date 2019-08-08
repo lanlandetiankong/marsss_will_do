@@ -1,20 +1,5 @@
 package com.marsss.marsss_will_do.service.projects;
 
-<<<<<<< HEAD
-import com.marsss.marsss_will_do.entity.projects.ActivityProject;
-
-public interface ActivityProjectService {
-
-    void doGetActivityProjectByUserId(String userId) ;
-
-    void doCreateActivityProject(ActivityProject activityProject) ;
-
-    void doUpdateActivityProject(ActivityProject activityProject) ;
-
-    void doDeleteActivityProject(String activityProjectId);
-
-    void doBatchDeleteActivityProject(String activityProjectIds);
-=======
 import com.marsss.marsss_will_do.bean.project.ActivityProjectBean;
 import com.marsss.marsss_will_do.common.base.service.MyBaseService;
 import com.marsss.marsss_will_do.entity.projects.ActivityProject;
@@ -25,7 +10,7 @@ import java.util.List;
 
 public interface ActivityProjectService extends MyBaseService {
 
-    void doGetActivityProjectByUserId(HttpServletRequest request,String userId) ;
+    void doGetActivityProjectByUserId(HttpServletRequest request, String userId) ;
 
     /**
      * 新建
@@ -69,7 +54,7 @@ public interface ActivityProjectService extends MyBaseService {
      * @return
      * @throws Exception
      */
-    List<ActivityProjectBean> doGetActivityProjectByUserAccount(HttpServletRequest request, UserAccount userAccount,String searchVal) throws Exception;
+    List<ActivityProjectBean> doGetActivityProjectByUserAccount(HttpServletRequest request, UserAccount userAccount, String searchVal) throws Exception;
     /**
      * 根据id查询 [活动项目]
      * @param request
@@ -78,5 +63,4 @@ public interface ActivityProjectService extends MyBaseService {
      * @throws Exception
      */
     ActivityProjectBean doGetActivityProjectById(HttpServletRequest request, UserAccount userAccount,String projectId) throws Exception;
->>>>>>> temp
 }

@@ -1,34 +1,23 @@
 package com.marsss.marsss_will_do.service.user;
 
 import com.marsss.marsss_will_do.bean.user.UserAccountBean;
-<<<<<<< HEAD
-=======
 import com.marsss.marsss_will_do.bean.user.UserToken;
 import com.marsss.marsss_will_do.common.base.service.MyBaseServiceImpl;
->>>>>>> temp
 import com.marsss.marsss_will_do.common.constant.exception.MyExceptionMsgConstant;
 import com.marsss.marsss_will_do.common.enums.user.UserAccountBaseTypeEnum;
 import com.marsss.marsss_will_do.common.enums.user.UserAccountRegisterTypeEnum;
 import com.marsss.marsss_will_do.common.enums.user.UserAccountStateEnum;
-<<<<<<< HEAD
 import com.marsss.marsss_will_do.common.properties.UserCustomProperties;
 import com.marsss.marsss_will_do.common.test.RandomValueUtil;
-=======
 import com.marsss.marsss_will_do.common.exception.user.UserAccountEmptyException;
-import com.marsss.marsss_will_do.common.properties.UserCustomProperties;
-import com.marsss.marsss_will_do.common.test.RandomValueUtil;
 import com.marsss.marsss_will_do.config.redis.RedisHelper;
->>>>>>> temp
 import com.marsss.marsss_will_do.entity.user.UserAccount;
 import com.marsss.marsss_will_do.repository.user.UserAccountRepository;
 import com.marsss.marsss_will_do.utils.password.MyPasswordUtil;
 import com.marsss.marsss_will_do.utils.pinyin.MyPinYinUtil;
 import com.marsss.marsss_will_do.utils.uuid.MyUUIDUtil;
 import org.apache.commons.beanutils.BeanUtils;
-<<<<<<< HEAD
-=======
 import org.apache.commons.lang.StringUtils;
->>>>>>> temp
 import org.hibernate.query.Query;
 import org.hibernate.query.internal.QueryImpl;
 import org.springframework.data.domain.Example;
@@ -38,20 +27,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-import java.lang.reflect.InvocationTargetException;
-
-@Service
-public class UserAccountServiceImpl implements UserAccountService {
-
-    private Logger logger = LoggerFactory.getLogger(UserAccountServiceImpl.class);
-    @Autowired
-    private UserCustomProperties userCustomProperties ;
-
-    @Autowired
-    private UserAccountRepository userAccountRepository ;
-
-=======
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 
@@ -65,7 +40,6 @@ public class UserAccountServiceImpl extends MyBaseServiceImpl implements UserAcc
     private UserCustomProperties userCustomProperties ;
     @Autowired
     private UserAccountRepository userAccountRepository ;
->>>>>>> temp
     @Autowired
     private UserAccountInfoService userAccountInfoService ;
 
@@ -95,7 +69,7 @@ public class UserAccountServiceImpl extends MyBaseServiceImpl implements UserAcc
         return userAccount;
     }
     @Override
-    public UserAccount doAddUserAccount(UserAccountBean userAccountBean) throws IllegalAccessException,InvocationTargetException{
+    public UserAccount doAddUserAccount(UserAccountBean userAccountBean) throws IllegalAccessException,InvocationTargetException {
         if(userAccountBean == null) {
             throw new NullPointerException(MyExceptionMsgConstant.NULL_OBJECT_INTRO) ;
         }
@@ -114,11 +88,7 @@ public class UserAccountServiceImpl extends MyBaseServiceImpl implements UserAcc
         return userAccountRepository.getUserAccountByUserAccount(accountId) != null ;
     }
 
-<<<<<<< HEAD
-    public void test(String accountId) {
-        ExampleMatcher exampleMatcher  = ExampleMatcher.matching();
-        userAccountRepository.findAll();
-=======
+
 
 
 
@@ -156,7 +126,6 @@ public class UserAccountServiceImpl extends MyBaseServiceImpl implements UserAcc
             }
         }
         return this.tokenIdToUserAccount(request,tokenId,isThrowException) ;
->>>>>>> temp
     }
 }
 

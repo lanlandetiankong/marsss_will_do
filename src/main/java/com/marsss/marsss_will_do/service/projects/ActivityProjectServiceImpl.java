@@ -1,12 +1,10 @@
 package com.marsss.marsss_will_do.service.projects;
 
-<<<<<<< HEAD
 import com.marsss.marsss_will_do.entity.projects.ActivityProject;
 import com.marsss.marsss_will_do.repository.projects.ActivityProjectRepository;
 import com.marsss.marsss_will_do.repository.projects.ArchiveProjectRepository;
 import com.marsss.marsss_will_do.repository.user.UserAccountRepository;
 import org.hibernate.criterion.Example;
-=======
 import com.marsss.marsss_will_do.bean.project.ActivityProjectBean;
 import com.marsss.marsss_will_do.bean.project.ActivityProjectBeanFormat;
 import com.marsss.marsss_will_do.common.base.service.MyBaseServiceImpl;
@@ -23,23 +21,17 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.beanutils.BeanUtils;
 import org.hibernate.criterion.Example;
 import org.owasp.esapi.User;
->>>>>>> temp
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-@Service
-public class ActivityProjectServiceImpl implements ActivityProjectService {
-=======
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ActivityProjectServiceImpl extends MyBaseServiceImpl implements ActivityProjectService {
->>>>>>> temp
     private Logger logger = LoggerFactory.getLogger(ActivityProjectServiceImpl.class);
 
     @Autowired
@@ -48,34 +40,10 @@ public class ActivityProjectServiceImpl extends MyBaseServiceImpl implements Act
     private ActivityProjectRepository activityProjectRepository ;
     @Autowired
     private ArchiveProjectRepository archiveProjectRepository ;
-<<<<<<< HEAD
-
-
-    @Override
-    public void doGetActivityProjectByUserId(String userId) {
-
-    }
-
-    @Override
-    public void doCreateActivityProject(ActivityProject activityProject) {
-
-    }
-
-    @Override
-    public void doUpdateActivityProject(ActivityProject activityProject) {
-
-    }
-
-    @Override
-    public void doDeleteActivityProject(String activityProjectId) {
-
-    }
-
-    @Override
-    public void doBatchDeleteActivityProject(String activityProjectIds) {
-=======
     @Autowired
-    private UserAccountService userAccountService ;
+    private UserAccountService userAccountService;
+
+
 
 
     @Override
@@ -84,7 +52,7 @@ public class ActivityProjectServiceImpl extends MyBaseServiceImpl implements Act
     }
     @ApiOperation("Service:创建新项目,by Vo")
     @Override
-    public ActivityProjectBean doCreateActivityProject(HttpServletRequest request,ActivityProject vo) throws Exception{
+    public ActivityProjectBean doCreateActivityProject(HttpServletRequest request, ActivityProject vo) throws Exception{
         vo.setState(ProjectStateEnum.ENABLED.getValue());
         vo.setUserAccount(userAccountService.requestGetUserAccount(request,true));
         vo = activityProjectRepository.save(vo) ;
@@ -166,6 +134,5 @@ public class ActivityProjectServiceImpl extends MyBaseServiceImpl implements Act
         }   else {
             return  ActivityProjectBeanFormat.entityToBean(vo);
         }
->>>>>>> temp
     }
 }

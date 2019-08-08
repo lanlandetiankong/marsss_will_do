@@ -1,21 +1,15 @@
 package com.marsss.marsss_will_do.service.user;
 
 import com.marsss.marsss_will_do.bean.user.UserAccountBean;
-<<<<<<< HEAD
-import com.marsss.marsss_will_do.entity.user.UserAccount;
-
-import java.lang.reflect.InvocationTargetException;
-
-public interface UserAccountService {
-=======
 import com.marsss.marsss_will_do.common.base.service.MyBaseService;
 import com.marsss.marsss_will_do.entity.user.UserAccount;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 
+
+
 public interface UserAccountService extends MyBaseService {
->>>>>>> temp
     UserAccount doAddUserAccount(UserAccount userAccount) ;
     UserAccount doAddUserAccount(UserAccountBean userAccountBean) throws IllegalAccessException,InvocationTargetException ;
 
@@ -24,8 +18,6 @@ public interface UserAccountService extends MyBaseService {
 
     UserAccount doGetUserAccountByAccountId(String accountId);
     boolean doCheckIsAccountExistByAccount(String accountId) ;
-<<<<<<< HEAD
-=======
     /**
      * 根据token id 取得 用户信息
      * (TODO：根据token从Redis取得对应真实的Token,再 让(token+sessionId) 进行md5 加密，判断是否 与Token.md5Token )
@@ -42,5 +34,4 @@ public interface UserAccountService extends MyBaseService {
      * @return
      */
     UserAccount requestGetUserAccount(HttpServletRequest request,boolean isThrowException);
->>>>>>> temp
 }

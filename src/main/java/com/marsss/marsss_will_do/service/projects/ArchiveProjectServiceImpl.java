@@ -1,7 +1,5 @@
 package com.marsss.marsss_will_do.service.projects;
 
-<<<<<<< HEAD
-=======
 import com.marsss.marsss_will_do.bean.project.ActivityProjectBean;
 import com.marsss.marsss_will_do.bean.project.ActivityProjectBeanFormat;
 import com.marsss.marsss_will_do.bean.project.ArchiveProjectBean;
@@ -11,7 +9,6 @@ import com.marsss.marsss_will_do.common.enums.project.ProjectStateEnum;
 import com.marsss.marsss_will_do.entity.projects.ActivityProject;
 import com.marsss.marsss_will_do.entity.projects.ArchiveProject;
 import com.marsss.marsss_will_do.entity.user.UserAccount;
->>>>>>> temp
 import com.marsss.marsss_will_do.repository.projects.ActivityProjectRepository;
 import com.marsss.marsss_will_do.repository.projects.ArchiveProjectRepository;
 import com.marsss.marsss_will_do.repository.user.UserAccountRepository;
@@ -21,17 +18,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-@Service
-public class ArchiveProjectServiceImpl implements ArchiveProjectService {
-=======
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ArchiveProjectServiceImpl extends MyBaseServiceImpl implements ArchiveProjectService {
->>>>>>> temp
     private Logger logger = LoggerFactory.getLogger(ArchiveProjectServiceImpl.class);
 
     @Autowired
@@ -42,11 +34,7 @@ public class ArchiveProjectServiceImpl extends MyBaseServiceImpl implements Arch
     private ArchiveProjectRepository archiveProjectRepository ;
 
 
-<<<<<<< HEAD
 
-
-
-=======
     /**
      * 根据用户id查询 [归档项目]
      *
@@ -56,7 +44,7 @@ public class ArchiveProjectServiceImpl extends MyBaseServiceImpl implements Arch
      * @throws Exception
      */
     @Override
-    public List<ArchiveProjectBean> doGetArchiveProjectByUserAccount(HttpServletRequest request, UserAccount userAccount,String searchVal) throws Exception {
+    public List<ArchiveProjectBean> doGetArchiveProjectByUserAccount(HttpServletRequest request, UserAccount userAccount, String searchVal) throws Exception {
         List<ArchiveProject> list = archiveProjectRepository.getArchiveProjectsByUserAccountId(userAccount.getId(),paramGetLikeStr(searchVal)) ;
         if(list == null) {
             return  null ;
@@ -102,5 +90,4 @@ public class ArchiveProjectServiceImpl extends MyBaseServiceImpl implements Arch
         entity.setState(ProjectStateEnum.DELETE.getValue());
         archiveProjectRepository.save(entity);
     }
->>>>>>> temp
 }
