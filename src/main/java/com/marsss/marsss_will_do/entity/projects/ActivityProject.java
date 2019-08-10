@@ -17,7 +17,7 @@ public class ActivityProject extends MyBaseEntity {
     private String name;
     private String code;
 
-    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "user_account_id",nullable = true)
     private UserAccount userAccount;
 

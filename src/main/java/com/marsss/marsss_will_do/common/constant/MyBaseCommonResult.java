@@ -24,6 +24,14 @@ public class MyBaseCommonResult<T> implements Serializable {
     private String backUrl ;
     //存储 表格数据
     private List rows ;
+    //存储 树集合
+    private List resultList ;
+    //存储 一些自定义属性的map集合
+    private Map resultMap ;
+    //存储 不重复的集合
+    private Set resultSet ;
+
+    private String[] errorArray ;
 
     private T bean;
     private Integer code;
@@ -45,14 +53,7 @@ public class MyBaseCommonResult<T> implements Serializable {
         this.backUrl = backUrl;
     }
 
-    //存储 树集合
-    private List resultList ;
-    //存储 一些自定义属性的map集合
-    private Map resultMap ;
-    //存储 不重复的集合
-    private Set resultSet ;
 
-    private String[] errorArray ;
 
     public String getToken() {
         return token;

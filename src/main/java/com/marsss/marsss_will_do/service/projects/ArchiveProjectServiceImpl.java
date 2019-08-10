@@ -1,18 +1,14 @@
 package com.marsss.marsss_will_do.service.projects;
 
-import com.marsss.marsss_will_do.bean.project.ActivityProjectBean;
-import com.marsss.marsss_will_do.bean.project.ActivityProjectBeanFormat;
 import com.marsss.marsss_will_do.bean.project.ArchiveProjectBean;
 import com.marsss.marsss_will_do.bean.project.ArchiveProjectBeanFormat;
 import com.marsss.marsss_will_do.common.base.service.MyBaseServiceImpl;
 import com.marsss.marsss_will_do.common.enums.project.ProjectStateEnum;
-import com.marsss.marsss_will_do.entity.projects.ActivityProject;
 import com.marsss.marsss_will_do.entity.projects.ArchiveProject;
 import com.marsss.marsss_will_do.entity.user.UserAccount;
 import com.marsss.marsss_will_do.repository.projects.ActivityProjectRepository;
 import com.marsss.marsss_will_do.repository.projects.ArchiveProjectRepository;
 import com.marsss.marsss_will_do.repository.user.UserAccountRepository;
-import com.marsss.marsss_will_do.service.short_notes.ShortNoteServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -10,8 +10,6 @@ import java.util.List;
 
 public interface ActivityProjectService extends MyBaseService {
 
-    void doGetActivityProjectByUserId(HttpServletRequest request, String userId) ;
-
     /**
      * 新建
      * @param request

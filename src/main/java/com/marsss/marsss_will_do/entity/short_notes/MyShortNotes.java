@@ -7,14 +7,16 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "short_note", schema = "mars_will_do")
+@Table(name = "my_short_note", schema = "mars_will_do")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
-public class ShortNote extends MyBaseEntity {
+public class MyShortNotes extends MyBaseEntity {
     @Id
     @Column(name = "short_note_id")
     @GeneratedValue(generator = "jpa-uuid")
     private String id;
-    private String title;
+
+    @Basic
+    @Column(name = "content")
     private String content;
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     @JoinColumn(name = "user_account_id",nullable = true)
@@ -29,18 +31,7 @@ public class ShortNote extends MyBaseEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "title")
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    @Basic
-    @Column(name = "content")
     public String getContent() {
         return content;
     }

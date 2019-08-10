@@ -46,14 +46,11 @@ public class ActivityProjectServiceImpl extends MyBaseServiceImpl implements Act
 
 
 
-    @Override
-    public void doGetActivityProjectByUserId(HttpServletRequest request,String userId) {
-
-    }
     @ApiOperation("Service:创建新项目,by Vo")
     @Override
     public ActivityProjectBean doCreateActivityProject(HttpServletRequest request, ActivityProject vo) throws Exception{
         vo.setState(ProjectStateEnum.ENABLED.getValue());
+        vo.setIsTranslateArchive(0);
         vo.setUserAccount(userAccountService.requestGetUserAccount(request,true));
         vo = activityProjectRepository.save(vo) ;
         ActivityProjectBean bean = ActivityProjectBeanFormat.entityToBean(vo);
