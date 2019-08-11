@@ -7,15 +7,17 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tag", schema = "mars_will_do")
+@Table(name = "my_tags", schema = "mars_will_do")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
-public class Tag extends MyBaseEntity {
+public class MyTags extends MyBaseEntity {
     @Id
     @Column(name = "tag_id")
     @GeneratedValue(generator = "jpa-uuid")
     private String id;
     private String name;
-    private String level;
+    @Basic
+    @Column(name = "hurry_level")
+    private String hurryLevel;
 
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     @JoinColumn(name = "user_account_id",nullable = true)
@@ -45,15 +47,16 @@ public class Tag extends MyBaseEntity {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "level")
-    public String getLevel() {
-        return level;
+    public String getHurryLevel() {
+        return hurryLevel;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setHurryLevel(String hurryLevel) {
+        this.hurryLevel = hurryLevel;
     }
+
+
+
 
     public UserAccount getUserAccount() {
         return userAccount;

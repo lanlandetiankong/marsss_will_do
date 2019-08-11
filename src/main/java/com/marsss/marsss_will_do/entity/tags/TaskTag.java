@@ -21,7 +21,7 @@ public class TaskTag extends MyBaseEntity {
 
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     @JoinColumn(name = "tag_id",nullable = false,insertable = true)
-    private Tag Tag;
+    private MyTags Tag;
 
 
     public String getId() {
@@ -40,11 +40,11 @@ public class TaskTag extends MyBaseEntity {
         this.task = task;
     }
 
-    public com.marsss.marsss_will_do.entity.tags.Tag getTag() {
+    public MyTags getTag() {
         return Tag;
     }
 
-    public void setTag(com.marsss.marsss_will_do.entity.tags.Tag tag) {
+    public void setTag(MyTags tag) {
         Tag = tag;
     }
 }

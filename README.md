@@ -1,5 +1,4 @@
 # marsss_will_do
-<<<<<<< HEAD
   [marsss_will_do]是一个 Todo记录 类型的项目，采用了前后端分离的开发模式。
   当前仓库是 [marsss_will_do]的后端项目，对应的前端项目地址为：  [待关联到github]
  [***目前前后端还在开发中。。。。。(前期为了配置跟统一这项目中的axios、vue等的规范，花费了不少时间。。。QAQ)] 
@@ -24,10 +23,3 @@
     reset.css/border.css
   }
   
-
-
-
-
-=======
-springboot hibrenate jpa 
->>>>>>> temp

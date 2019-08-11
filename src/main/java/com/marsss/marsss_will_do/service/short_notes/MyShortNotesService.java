@@ -40,7 +40,7 @@ public interface MyShortNotesService extends MyBaseService {
 
 
     /**
-     * 根据用户id查询 [活动项目]
+     * 根据用户id查询 [便签]
      * @param request
      * @param userAccount
      * @return

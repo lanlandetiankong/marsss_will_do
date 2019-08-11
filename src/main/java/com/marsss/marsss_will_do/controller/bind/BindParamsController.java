@@ -18,12 +18,29 @@ import java.util.Map;
 public class BindParamsController extends MyBaseController {
 
     /**
-     * 紧急级别
+     * 项目紧急级别
      * @param request
      * @return
      */
-    @PostMapping(value = "/project_level")
-    public MyEnumResult bindHurryLevel(HttpServletRequest request) {
+    @PostMapping(value = "/project_hurry_level")
+    public MyEnumResult bindProjectHurryLevel(HttpServletRequest request) {
+        super.handleCheckIsUserAccountToken(request,false) ;
+        MyEnumResult enumResult = new MyEnumResult() ;
+        List<Map<String,Object>> list = new ArrayList<Map<String,Object>>() ;
+        for(ProjectHurryLevelEnum theEnum : ProjectHurryLevelEnum.values()){
+            list.add(theEnum.toMap());
+        }
+        enumResult.setEnumList(list);
+        enumResult.setSize(list.size());
+        return enumResult ;
+    }
+    /**
+     * 标签 紧急级别
+     * @param request
+     * @return
+     */
+    @PostMapping(value = "/tags_hurry_level")
+    public MyEnumResult bindTagsHurryLevel(HttpServletRequest request) {
         super.handleCheckIsUserAccountToken(request,false) ;
         MyEnumResult enumResult = new MyEnumResult() ;
         List<Map<String,Object>> list = new ArrayList<Map<String,Object>>() ;
