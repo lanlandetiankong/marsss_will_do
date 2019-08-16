@@ -19,14 +19,13 @@ public class Task  extends MyBaseEntity {
     private String id;
     private String name;
     private String nameSpell;
-    private String title;
 
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     @JoinColumn(name = "user_account_id",nullable = false)
     private UserAccount userAccount;
 
-    private String presenter;
-    private String participant;
+    private String presenter;   //提出人员
+    private String participant;     //参与人员
     private Integer taskLevel;
 
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
@@ -44,7 +43,6 @@ public class Task  extends MyBaseEntity {
     private String progressId;
     private Timestamp planStartDate;
     private Timestamp planEndDate;
-    private String location;
 
 
 
@@ -75,16 +73,6 @@ public class Task  extends MyBaseEntity {
 
     public void setNameSpell(String nameSpell) {
         this.nameSpell = nameSpell;
-    }
-
-    @Basic
-    @Column(name = "title")
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public UserAccount getUserAccount() {
@@ -204,16 +192,6 @@ public class Task  extends MyBaseEntity {
 
     public void setPlanEndDate(Timestamp planEndDate) {
         this.planEndDate = planEndDate;
-    }
-
-    @Basic
-    @Column(name = "location")
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
 

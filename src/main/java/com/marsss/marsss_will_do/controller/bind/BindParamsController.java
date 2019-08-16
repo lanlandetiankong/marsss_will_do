@@ -3,6 +3,7 @@ package com.marsss.marsss_will_do.controller.bind;
 import com.marsss.marsss_will_do.common.base.controller.MyBaseController;
 import com.marsss.marsss_will_do.common.constant.MyEnumResult;
 import com.marsss.marsss_will_do.common.enums.project.ProjectHurryLevelEnum;
+import com.marsss.marsss_will_do.common.enums.task.TaskHurryLevelEnum;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +46,24 @@ public class BindParamsController extends MyBaseController {
         MyEnumResult enumResult = new MyEnumResult() ;
         List<Map<String,Object>> list = new ArrayList<Map<String,Object>>() ;
         for(ProjectHurryLevelEnum theEnum : ProjectHurryLevelEnum.values()){
+            list.add(theEnum.toMap());
+        }
+        enumResult.setEnumList(list);
+        enumResult.setSize(list.size());
+        return enumResult ;
+    }
+
+    /**
+     * [任务] 级别
+     * @param request
+     * @return
+     */
+    @PostMapping(value = "/task_hurry_level")
+    public MyEnumResult bindTaskHurryLevel(HttpServletRequest request) {
+        super.handleCheckIsUserAccountToken(request,false) ;
+        MyEnumResult enumResult = new MyEnumResult() ;
+        List<Map<String,Object>> list = new ArrayList<Map<String,Object>>() ;
+        for(TaskHurryLevelEnum theEnum : TaskHurryLevelEnum.values()){
             list.add(theEnum.toMap());
         }
         enumResult.setEnumList(list);

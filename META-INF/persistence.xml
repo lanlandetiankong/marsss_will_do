@@ -5,7 +5,6 @@
         <class>com.marsss.marsss_will_do.entity.projects.ActivityProject</class>
         <class>com.marsss.marsss_will_do.entity.projects.ArchiveProject</class>
         <class>com.marsss.marsss_will_do.entity.short_notes.MyShortNotes</class>
-        <class>com.marsss.marsss_will_do.entity.tasks.SubTask</class>
         <class>com.marsss.marsss_will_do.entity.tags.MyTags</class>
         <class>com.marsss.marsss_will_do.entity.tasks.Task</class>
         <class>com.marsss.marsss_will_do.entity.tags.TaskTag</class>
