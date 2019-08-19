@@ -1,6 +1,7 @@
 # marsss_will_do
   [marsss_will_do]是一个 Todo记录 类型的项目，采用了前后端分离的开发模式。
-  当前仓库是 [marsss_will_do]的后端项目，对应的前端项目地址为：  [待关联到github]
+  当前仓库是 [marsss_will_do]的后端项目，对应的前端项目地址为：  
+  # https://github.com/lanlandetiankong/marsss_will_do_vue
  [***目前前后端还在开发中。。。。。(前期为了配置跟统一这项目中的axios、vue等的规范，花费了不少时间。。。QAQ)] 
   
   后端使用到的框架主要有 {
@@ -22,4 +23,5 @@
     在main.js引用公用工具类，让Vue在子组件各处都能使用到该工具类
     reset.css/border.css
   }
+  
   
