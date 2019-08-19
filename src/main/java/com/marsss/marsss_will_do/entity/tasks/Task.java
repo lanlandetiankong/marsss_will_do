@@ -26,7 +26,9 @@ public class Task  extends MyBaseEntity {
 
     private String presenter;   //提出人员
     private String participant;     //参与人员
-    private Integer taskLevel;
+    @Basic
+    @Column(name = "task_level")
+    private String taskLevel;
 
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     @JoinColumn(name = "activity_project_id",nullable = true)
@@ -103,15 +105,16 @@ public class Task  extends MyBaseEntity {
         this.participant = participant;
     }
 
-    @Basic
-    @Column(name = "task_level")
-    public Integer getTaskLevel() {
+    public String getTaskLevel() {
         return taskLevel;
     }
 
-    public void setTaskLevel(Integer taskLevel) {
+    public void setTaskLevel(String taskLevel) {
         this.taskLevel = taskLevel;
     }
+
+
+
 
 
     @Basic

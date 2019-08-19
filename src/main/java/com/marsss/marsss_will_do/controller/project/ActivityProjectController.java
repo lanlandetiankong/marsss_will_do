@@ -63,7 +63,7 @@ public class ActivityProjectController extends MyBaseController{
     }
 
     @ApiOperation(value = "取得用户的[活动项目]",notes = "根据token取得用户的[活动项目]")
-    @PostMapping("/get_activity_project")
+    @PostMapping("/get/activity_project")
     public MyBaseCommonResult doGetActivityProjectByTokenId(HttpServletRequest request,String searchVal) {
         MyBaseCommonResult result = new MyBaseCommonResult() ;
         try{

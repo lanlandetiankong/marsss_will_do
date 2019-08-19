@@ -28,6 +28,16 @@ public class MyBaseEntity implements Serializable{
 
     private String remark ;
 
+    private Integer sort ;
+
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
 
     public Integer getState() {
         return state;
