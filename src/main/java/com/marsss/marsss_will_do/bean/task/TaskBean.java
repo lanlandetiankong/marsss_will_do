@@ -21,6 +21,14 @@ public class TaskBean {
     private String archiveProjectId;
 
     private String description;
+    //进度
+    private Integer progressRate ;
+    private String progressRateStatus ;
+    private String progressRateShowText ;
+    private Integer progressIsException ;
+    private String progressExceptionNote ;
+
+
     private String firstNote;
     private String secondNote;
     private String thirdNote;
@@ -43,6 +51,45 @@ public class TaskBean {
     private String vueElType;
     private String vueElIcon ;
 
+    public String getProgressExceptionNote() {
+        return progressExceptionNote;
+    }
+
+    public void setProgressExceptionNote(String progressExceptionNote) {
+        this.progressExceptionNote = progressExceptionNote;
+    }
+
+    public Integer getProgressIsException() {
+        return progressIsException;
+    }
+
+    public void setProgressIsException(Integer progressIsException) {
+        this.progressIsException = progressIsException;
+    }
+
+    public String getProgressRateShowText() {
+        return progressRateShowText;
+    }
+
+    public void setProgressRateShowText(String progressRateShowText) {
+        this.progressRateShowText = progressRateShowText;
+    }
+
+    public String getProgressRateStatus() {
+        return progressRateStatus;
+    }
+
+    public void setProgressRateStatus(String progressRateStatus) {
+        this.progressRateStatus = progressRateStatus;
+    }
+
+    public Integer getProgressRate() {
+        return progressRate;
+    }
+
+    public void setProgressRate(Integer progressRate) {
+        this.progressRate = progressRate;
+    }
 
     public String getPlanStartDateStr() {
         return planStartDateStr;

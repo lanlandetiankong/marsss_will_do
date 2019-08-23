@@ -3,6 +3,7 @@ package com.marsss.marsss_will_do.bean.task;
 
 import com.marsss.marsss_will_do.common.bean.BeanHelper;
 import com.marsss.marsss_will_do.common.enums.task.TaskHurryLevelEnum;
+import com.marsss.marsss_will_do.common.enums.task.TaskProgressRateEnum;
 import com.marsss.marsss_will_do.entity.projects.ActivityProject;
 import com.marsss.marsss_will_do.entity.projects.ArchiveProject;
 import com.marsss.marsss_will_do.entity.tasks.Task;
@@ -90,6 +91,8 @@ public class TaskBeanFormat {
             entity.setSecondNote(bean.getSecondNote());
             //entity.setSort(bean.getSort());
             entity.setRemark(bean.getRemark());
+            entity.setProgressRate(bean.getProgressRate());
+            entity.setStatus(bean.getStatus());
             return entity ;
         }   catch (Exception e){
             e.printStackTrace();
@@ -111,6 +114,14 @@ public class TaskBeanFormat {
                     bean.setVueElIcon(taskHurryLevelEnum.getIcon());
                 }
             }
+        }
+        Integer taskProgressRate = bean.getProgressRate() ;
+        Integer progressIsException = bean.getProgressIsException();
+        boolean isProgressException = (progressIsException == null || progressIsException == 0) ? false : true ;
+        if(taskProgressRate != null){
+            TaskProgressRateEnum rateEnum = TaskProgressRateEnum.getByRateValue(taskProgressRate,isProgressException);
+            bean.setProgressRateStatus(rateEnum.getValue());
+            bean.setProgressRateShowText(rateEnum.getShowText());
         }
     }
 }

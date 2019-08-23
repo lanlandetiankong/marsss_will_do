@@ -38,6 +38,17 @@ public class Task  extends MyBaseEntity {
     private ArchiveProject archiveProject;
 
     private String description;
+    @Basic
+    @Column(name = "progress_rate")
+    private Integer progressRate ;
+    @Basic
+    @Column(name = "progress_is_exception")
+    private Integer progressIsException ;
+
+    @Basic
+    @Column(name = "progress_exception_note")
+    private String progressExceptionNote ;
+
     private String firstNote;
     private String secondNote;
     private String thirdNote;
@@ -212,5 +223,29 @@ public class Task  extends MyBaseEntity {
 
     public void setArchiveProject(ArchiveProject archiveProject) {
         this.archiveProject = archiveProject;
+    }
+
+    public Integer getProgressRate() {
+        return progressRate;
+    }
+
+    public void setProgressRate(Integer progressRate) {
+        this.progressRate = progressRate;
+    }
+
+    public Integer getProgressIsException() {
+        return progressIsException;
+    }
+
+    public void setProgressIsException(Integer progressIsException) {
+        this.progressIsException = progressIsException;
+    }
+
+    public String getProgressExceptionNote() {
+        return progressExceptionNote;
+    }
+
+    public void setProgressExceptionNote(String progressExceptionNote) {
+        this.progressExceptionNote = progressExceptionNote;
     }
 }
