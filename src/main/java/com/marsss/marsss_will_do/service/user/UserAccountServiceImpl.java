@@ -1,12 +1,14 @@
 package com.marsss.marsss_will_do.service.user;
 
 import com.marsss.marsss_will_do.bean.user.UserAccountBean;
+import com.marsss.marsss_will_do.bean.user.UserAccountBeanFormat;
 import com.marsss.marsss_will_do.bean.user.UserToken;
 import com.marsss.marsss_will_do.common.base.service.MyBaseServiceImpl;
 import com.marsss.marsss_will_do.common.constant.exception.MyExceptionMsgConstant;
 import com.marsss.marsss_will_do.common.enums.user.UserAccountBaseTypeEnum;
 import com.marsss.marsss_will_do.common.enums.user.UserAccountRegisterTypeEnum;
 import com.marsss.marsss_will_do.common.enums.user.UserAccountStateEnum;
+import com.marsss.marsss_will_do.common.exception.user.UserAccountRegisteredException;
 import com.marsss.marsss_will_do.common.properties.UserCustomProperties;
 import com.marsss.marsss_will_do.common.test.RandomValueUtil;
 import com.marsss.marsss_will_do.common.exception.user.UserAccountEmptyException;
@@ -29,9 +31,11 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
 
 @Service
-public class UserAccountServiceImpl extends MyBaseServiceImpl implements UserAccountService {
+public class
+UserAccountServiceImpl extends MyBaseServiceImpl implements UserAccountService {
 
     private Logger logger = LoggerFactory.getLogger(UserAccountServiceImpl.class);
     @Autowired
@@ -78,6 +82,35 @@ public class UserAccountServiceImpl extends MyBaseServiceImpl implements UserAcc
         return doAddUserAccount(vo);
     }
 
+
+    @Override
+    public UserAccountBean doRegisterUserAccount(UserAccount userAccount) throws Exception{
+        if(userAccount == null){
+            throw new UserAccountEmptyException("注册用户的实体类传入失败！") ;
+        }
+        userAccount.setNickNameSpell(MyPinYinUtil.toPinyin(userAccount.getNickName()));
+        userAccount.setUserNameSpell(MyPinYinUtil.toPinyin(userAccount.getUserName()));
+        //密码
+        userAccount.setSalt(MyUUIDUtil.renderSimpleUUID());
+        userAccount.setPassword(MyPasswordUtil.renderMd5Password(userAccount.getPassword(),userAccount.getSalt()));
+        userAccount.setState(1);
+        userAccount.setBaseType(UserAccountBaseTypeEnum.SIMPLE_USER.getValue());
+        userAccount.setSort(userAccount.getAccount().hashCode());
+        userAccount.setRegisterType(UserAccountRegisterTypeEnum.FRONT_REGISTER.getValue());
+        userAccount = userAccountRepository.save(userAccount) ;
+        return UserAccountBeanFormat.entityToBean(userAccount);
+    }
+
+    @Override
+    public UserAccountBean doRegisterUserAccount(UserAccountBean userAccountBean) throws Exception {
+        if(userAccountBean == null) {
+            throw new NullPointerException(MyExceptionMsgConstant.NULL_OBJECT_INTRO) ;
+        }
+        UserAccount vo = new UserAccount() ;
+        BeanUtils.copyProperties(vo,userAccountBean);
+        return doRegisterUserAccount(vo);
+    }
+
     @Override
     public UserAccount doGetUserAccountByAccountId(String accountId) {
         return userAccountRepository.getUserAccountByUserAccount(accountId);
@@ -88,6 +121,10 @@ public class UserAccountServiceImpl extends MyBaseServiceImpl implements UserAcc
         return userAccountRepository.getUserAccountByUserAccount(accountId) != null ;
     }
 
+    @Override
+    public boolean doCheckIsAccountExistByEmail(String accountId) {
+        return userAccountRepository.getUserAccountByUserAccount(accountId) != null ;
+    }
 
 
 
@@ -127,5 +164,7 @@ public class UserAccountServiceImpl extends MyBaseServiceImpl implements UserAcc
         }
         return this.tokenIdToUserAccount(request,tokenId,isThrowException) ;
     }
+
+
 }
 

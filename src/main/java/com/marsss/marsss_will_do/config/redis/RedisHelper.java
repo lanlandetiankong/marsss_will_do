@@ -10,7 +10,8 @@ import java.util.concurrent.TimeUnit;
  * 方法命名格式为 数据操作类型 + 操作 如 hashPut 指以hash结构(也就是map)想key添加键值对
  */
 public interface RedisHelper<HK,T> {
-    String THE_KEY_USER_LOGIN_TOKEN = "userToken" ;
+    String THE_KEY_USER_LOGIN_TOKEN = "userToken_" ;
+    String DB_KEY_AUTHCODE ="authCode_" ;
 
     /**
      * Hash结构 添加元素 * @param key key * @param hashKey hashKey * @param domain 元素
@@ -58,6 +59,16 @@ public interface RedisHelper<HK,T> {
     void valuePut(String key, T domain);
 
     /**
+     * 有时限的 对象的实体类
+     * @param key
+     * @param domain
+     * @param timeout
+     * @param timeUnit
+     * @return
+     */
+    boolean valuePut(String key,T domain,long timeout, TimeUnit timeUnit) ;
+
+    /**
      * 获取对象实体类
      * @param key
      * @return
@@ -70,5 +81,8 @@ public interface RedisHelper<HK,T> {
      * 设置过期时间 * @param key 键 * @param timeout 时间 * @param timeUnit 时间单位
      */
     boolean expirse(String key, long timeout, TimeUnit timeUnit);
+
+
+    boolean isExistKey(String key);
 
 }

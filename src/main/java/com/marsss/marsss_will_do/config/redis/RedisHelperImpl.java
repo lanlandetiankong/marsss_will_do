@@ -137,6 +137,19 @@ public class RedisHelperImpl<HK,T> implements RedisHelper<HK,T>{
         valueOperations.set(key,domain);
     }
 
+    /**
+     * 有时限的 对象的实体类
+     * @param key
+     * @param domain
+     * @param timeout
+     * @param timeUnit
+     * @return
+     */
+    @Override
+    public boolean valuePut(String key,T domain,long timeout, TimeUnit timeUnit) {
+        this.valuePut(key,domain);
+        return redisTemplate.expire(key,timeout,timeUnit) ;
+    }
 
     /**
      * 获取对象实体类
@@ -164,5 +177,11 @@ public class RedisHelperImpl<HK,T> implements RedisHelper<HK,T>{
     @Override
     public boolean expirse(String key, long timeout, TimeUnit timeUnit) {
         return redisTemplate.expire(key,timeout,timeUnit) ;
+    }
+
+
+    @Override
+    public boolean isExistKey(String key) {
+        return redisTemplate.hasKey(key);
     }
 }

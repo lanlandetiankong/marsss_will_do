@@ -1,7 +1,7 @@
 package com.marsss.marsss_will_do.common.enums.user;
 
 public enum UserAccountRegisterTypeEnum {
-    FRONT_REGISTER(1,"用户注册");
+    FRONT_REGISTER(1,"用户注册页面");
 
     UserAccountRegisterTypeEnum(Integer value, String name) {
         this.value = value;

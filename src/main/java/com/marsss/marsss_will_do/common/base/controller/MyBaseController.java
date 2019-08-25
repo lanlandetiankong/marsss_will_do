@@ -23,7 +23,7 @@ import java.util.Date;
 
 public class MyBaseController {
     @Autowired
-    private RedisHelper redisHelper ;
+    public RedisHelper redisHelper ;
     @Autowired
     private UserAccountService userAccountService ;
     @Autowired

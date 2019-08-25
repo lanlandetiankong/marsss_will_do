@@ -25,6 +25,17 @@ public class UserAccountBean {
     private Integer baseType ;
     private Integer registerType;
 
+    private String validateCode ;   //验证码
+
+
+    public String getValidateCode() {
+        return validateCode;
+    }
+
+    public void setValidateCode(String validateCode) {
+        this.validateCode = validateCode;
+    }
+
     public String getId() {
         return id;
     }

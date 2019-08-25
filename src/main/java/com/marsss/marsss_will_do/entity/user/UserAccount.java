@@ -4,6 +4,7 @@ import com.marsss.marsss_will_do.common.base.repository.MyBaseEntity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user_account", schema = "mars_will_do")
@@ -168,4 +169,31 @@ public class UserAccount extends MyBaseEntity {
         this.registerType = registerType;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserAccount that = (UserAccount) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(userName, that.userName) &&
+                Objects.equals(nickName, that.nickName) &&
+                Objects.equals(userNameSpell, that.userNameSpell) &&
+                Objects.equals(nickNameSpell, that.nickNameSpell) &&
+                Objects.equals(account, that.account) &&
+                Objects.equals(salt, that.salt) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(userAccountInfo, that.userAccountInfo) &&
+                Objects.equals(sex, that.sex) &&
+                Objects.equals(telephone, that.telephone) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(baseType, that.baseType) &&
+                Objects.equals(registerType, that.registerType);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, userName, nickName, userNameSpell, nickNameSpell, account, salt, password, userAccountInfo, sex, telephone, email, baseType, registerType);
+    }
 }
