@@ -17,6 +17,8 @@ import com.marsss.marsss_will_do.entity.user.UserAccount;
 import com.marsss.marsss_will_do.repository.user.UserAccountRepository;
 import com.marsss.marsss_will_do.utils.password.MyPasswordUtil;
 import com.marsss.marsss_will_do.utils.pinyin.MyPinYinUtil;
+import com.marsss.marsss_will_do.utils.regex.RegexUtil;
+import com.marsss.marsss_will_do.utils.str.MyStringUtil;
 import com.marsss.marsss_will_do.utils.uuid.MyUUIDUtil;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
@@ -46,6 +48,8 @@ UserAccountServiceImpl extends MyBaseServiceImpl implements UserAccountService {
     private UserAccountRepository userAccountRepository ;
     @Autowired
     private UserAccountInfoService userAccountInfoService ;
+    @Autowired
+    private  UserAccountService userAccountService ;
 
     @Override
     public UserAccount doAddUserAccount(UserAccount userAccount) {
@@ -97,6 +101,10 @@ UserAccountServiceImpl extends MyBaseServiceImpl implements UserAccountService {
         userAccount.setBaseType(UserAccountBaseTypeEnum.SIMPLE_USER.getValue());
         userAccount.setSort(userAccount.getAccount().hashCode());
         userAccount.setRegisterType(UserAccountRegisterTypeEnum.FRONT_REGISTER.getValue());
+
+        //用户信息
+        userAccount.setUserAccountInfo(userAccountInfoService.doGetPreAddUserAccountInfoVo());
+
         userAccount = userAccountRepository.save(userAccount) ;
         return UserAccountBeanFormat.entityToBean(userAccount);
     }
@@ -108,6 +116,7 @@ UserAccountServiceImpl extends MyBaseServiceImpl implements UserAccountService {
         }
         UserAccount vo = new UserAccount() ;
         BeanUtils.copyProperties(vo,userAccountBean);
+        UserAccountBeanFormat.beanToEntity(userAccountBean,vo);
         return doRegisterUserAccount(vo);
     }
 
@@ -163,6 +172,29 @@ UserAccountServiceImpl extends MyBaseServiceImpl implements UserAccountService {
             }
         }
         return this.tokenIdToUserAccount(request,tokenId,isThrowException) ;
+    }
+
+
+    public void handleRegisterValidate(HttpServletRequest request,UserAccountBean accountBean) throws Exception {
+        String account = accountBean.getAccount() ;
+        String accountBeanEmail = accountBean.getEmail();
+        String validateCode = accountBean.getValidateCode();
+        boolean isFieldAllNotBlank = MyStringUtil.doCheckIsAllNotBlank(account,accountBeanEmail,validateCode) ;
+        if(isFieldAllNotBlank == false) {
+            throw new Exception("请先确保必填字段的填写！");
+        }
+        if(userAccountService.doCheckIsAccountExistByAccount(account)) {
+            throw new UserAccountRegisteredException("用户账号 "+account);
+        }
+        if(userAccountService.doCheckIsAccountExistByEmail(accountBeanEmail)) {
+            throw new UserAccountRegisteredException("邮箱 "+accountBeanEmail);
+        }
+        if(StringUtils.isBlank(validateCode)) {
+            throw new Exception("请先输入验证码！");
+        }
+        if(RegexUtil.checkEmail(account)){
+            throw new Exception("为确保用户可以通过登录账号跟邮箱两种方式登录，用户的登录账号不允许设置为邮箱格式！请重新设置用户账号");
+        }
     }
 
 

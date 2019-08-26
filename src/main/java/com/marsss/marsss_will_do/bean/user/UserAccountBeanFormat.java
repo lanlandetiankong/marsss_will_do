@@ -24,9 +24,9 @@ public class UserAccountBeanFormat {
         }
         return null ;
     }
-    public static UserAccount beanToEntity(UserAccountBean bean) throws Exception{
+    public static UserAccount beanToEntity(UserAccountBean bean,UserAccount entity) throws Exception{
         try{
-            UserAccount entity = new UserAccount() ;
+            entity = entity != null ? entity : new UserAccount() ;
             BeanUtils.copyProperties(entity,bean);
             return entity ;
         }   catch (Exception e){

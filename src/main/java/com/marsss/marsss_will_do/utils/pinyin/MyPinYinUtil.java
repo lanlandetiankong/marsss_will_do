@@ -5,6 +5,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * 汉字转换为拼音
@@ -50,6 +51,9 @@ public class MyPinYinUtil {
      * @return
      */
     public static String toPinyin(String chinese){
+        if(StringUtils.isBlank(chinese)){
+            return null ;
+        }
         String pinyinStr = "";
         char[] newChar = chinese.toCharArray();
         HanyuPinyinOutputFormat defaultFormat = new HanyuPinyinOutputFormat();

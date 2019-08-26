@@ -104,21 +104,11 @@ public class UserAccountController extends MyBaseController{
     public MyBaseCommonResult doRegisterAccount(HttpServletRequest request,UserAccountBean accountBean) {
         MyBaseCommonResult result = new MyBaseCommonResult() ;
         try{
+            //字段验证
+            userAccountService.handleRegisterValidate(request,accountBean) ;
             String account = accountBean.getAccount() ;
             String accountBeanEmail = accountBean.getEmail();
             String validateCode = accountBean.getValidateCode();
-            if(userAccountService.doCheckIsAccountExistByAccount(account)) {
-                throw new UserAccountRegisteredException("用户账号 "+account);
-            }
-            if(userAccountService.doCheckIsAccountExistByEmail(accountBeanEmail)) {
-                throw new UserAccountRegisteredException("邮箱 "+accountBeanEmail);
-            }
-            if(StringUtils.isBlank(validateCode)) {
-                throw new Exception("请先输入验证码！");
-            }
-            if(RegexUtil.checkEmail(account)){
-                throw new Exception("为确保用户可以通过登录账号跟邮箱两种方式登录，用户的登录账号不允许设置为邮箱格式！请重新设置用户账号");
-            }
             String redisKey = RedisHelper.DB_KEY_AUTHCODE+account ;
             UserAccountBean redisUserAccountBean = userAccountBeanRedisHelper.getValue(redisKey);
             if(redisUserAccountBean == null){
@@ -163,6 +153,9 @@ public class UserAccountController extends MyBaseController{
             }
             if(RegexUtil.checkEmail(toEmail) == false) {
                 throw new Exception("传入的邮箱不是有效的邮箱格式！") ;
+            }
+            if(userAccountService.doCheckIsAccountExistByAccount(account)) {
+                throw new UserAccountRegisteredException("用户账号 ",account);
             }
             //存放 验证码到 redis
             String checkCode = String.valueOf(new Random().nextInt(899999) + 100000);

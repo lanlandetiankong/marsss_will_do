@@ -51,5 +51,13 @@ public interface UserAccountService extends MyBaseService {
      */
     UserAccount requestGetUserAccount(HttpServletRequest request,boolean isThrowException);
 
+    /**
+     * 注册验证
+     * @param request
+     * @param accountBean
+     * @throws Exception
+     */
+    public void handleRegisterValidate(HttpServletRequest request,UserAccountBean accountBean) throws Exception;
+
 
 }
